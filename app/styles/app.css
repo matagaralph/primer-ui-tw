@@ -1,0 +1,25 @@
+@import "tailwindcss" prefix(tw);
+@import "@primer/primitives/dist/css/primitives.css";
+@import "@primer/primitives/dist/css/functional/themes/light.css";
+@import "@primer/primitives/dist/css/functional/themes/dark.css";
+@import "./fonts.css";
+
+@custom-variant dark (&:is([data-color-mode="dark"] *));
+
+@theme {
+  --font-default: Inter, Inter-var, InterVariable, sans-serif;
+  --border-color-default: var(--borderColor-default);
+}
+
+:root {
+  --fontStack-system: Inter, Inter-var, InterVariable, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --fontStack-sansSerif: Inter, Inter-var, InterVariable, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  color: var(--fgColor-default);
+  background-color: var(--bgColor-default);
+  font-family: var(--fontStack-sansSerif) !important;
+}
