@@ -1,22 +1,38 @@
-"use client";
-import { CounterLabel, PageHeader, StateLabel, Text } from "@primer/react";
-import { DataTable, Table } from "@primer/react/experimental";
-import Link from "next/link";
+'use client';
+import { CounterLabel } from '@primer/react';
+import { DataTable, Table } from '@primer/react/experimental';
+import Link from 'next/link';
 
 const shops = [
   {
-    id: "1986",
-    roaster_name: "Coffee Annan",
-    company: "Social Ecosystems",
-    website: "https://annan-coffee.myshopify.com",
-    platform: "Shopify",
-    status: "On",
+    id: '1986',
+    roaster_name: 'Coffee Annan',
+    company: 'Social Ecosystems',
+    website: 'https://annan-coffee.myshopify.com',
+    platform: 'Shopify',
+    status: 'On',
+  },
+  {
+    id: '1988',
+    roaster_name: 'Kaffezentrale',
+    company: 'Gustus Gmbh',
+    website: 'https://kaffezentrale.ch',
+    platform: 'Shopware',
+    status: 'On',
+  },
+  {
+    id: '1989',
+    roaster_name: 'CA Händlerportal',
+    company: 'Gustus Gmbh',
+    website: 'https://28b124-1b.myshopify.com',
+    platform: 'Shopify',
+    status: 'On',
   },
 ];
 
 export default function ShopsPage() {
   return (
-    <main className="tw:max-w-7xl tw:mx-auto tw:px-4 tw:pt-8 tw:sm:px-6">
+    <main className='tw:mx-auto tw:max-w-7xl tw:px-4 tw:pt-8 tw:sm:px-6'>
       {/* <PageHeader role="banner" aria-label="connected-shops">
         <PageHeader.TitleArea>
           <PageHeader.Title>Connected Shops</PageHeader.Title>
@@ -33,20 +49,20 @@ export default function ShopsPage() {
           data={shops}
           columns={[
             {
-              header: "ID",
-              field: "id",
+              header: 'ID',
+              field: 'id',
             },
             {
-              header: "Coffee Roaster",
-              field: "roaster_name",
+              header: 'Coffee Roaster',
+              field: 'roaster_name',
             },
             {
-              header: "Shop URL",
-              field: "website",
+              header: 'Shop URL',
+              field: 'website',
               renderCell: (row) => (
                 <Link
-                  target="_blank"
-                  className="tw:text-[var(--fgColor-link)]"
+                  target='_blank'
+                  className='tw:text-[var(--fgColor-link)]'
                   href={row.website}
                 >
                   {row.website}
@@ -54,16 +70,16 @@ export default function ShopsPage() {
               ),
             },
             {
-              header: "Company",
-              field: "company",
+              header: 'Company',
+              field: 'company',
             },
             {
-              header: "Platform",
-              field: "platform",
+              header: 'Platform',
+              field: 'platform',
             },
             {
-              header: "Status",
-              field: "status",
+              header: 'Status',
+              field: 'status',
               renderCell: (row) => <CounterLabel>{row.status}</CounterLabel>,
             },
           ]}

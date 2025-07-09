@@ -1,10 +1,11 @@
-import AppNavbar from "./NavBar";
+import AppNavbar from './NavBar';
+import { QueryProvider } from './query-provider';
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <AppNavbar />
-      {children}
+      <QueryProvider>{children}</QueryProvider>
     </>
   );
 }

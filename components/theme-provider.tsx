@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { ThemeProvider as NextThemeProvider, useTheme } from "next-themes";
-import { ThemeProvider as PrimerThemeProvider, theme } from "@primer/react";
-import { useEffect, useState } from "react";
-import deepmerge from "deepmerge";
+import { ThemeProvider as NextThemeProvider, useTheme } from 'next-themes';
+import { ThemeProvider as PrimerThemeProvider, theme } from '@primer/react';
+import { useEffect, useState } from 'react';
+import deepmerge from 'deepmerge';
 
 const customTheme = deepmerge(theme, {
   fonts: {
-    normal: "Inter-var,InterVariable, Inter, sans-serif",
+    normal: 'Inter-var,InterVariable, Inter, sans-serif',
   },
   fontSizes: {
-    0: "14px",
-    1: "16px",
-    2: "20px",
-    3: "24px",
-    4: "32px",
-    5: "40px",
-    6: "48px",
-    7: "52px",
+    0: '14px',
+    1: '16px',
+    2: '20px',
+    3: '24px',
+    4: '32px',
+    5: '40px',
+    6: '48px',
+    7: '52px',
   },
 });
 
@@ -29,10 +29,10 @@ function PrimerWrapper({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
-  const colorMode = resolvedTheme === "dark" ? "dark" : "light";
+  const colorMode = resolvedTheme === 'dark' ? 'dark' : 'light';
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-color-mode", colorMode);
+    document.documentElement.setAttribute('data-color-mode', colorMode);
   }, [colorMode]);
 
   return (
@@ -48,7 +48,7 @@ function PrimerWrapper({ children }: { children: React.ReactNode }) {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (
-    <NextThemeProvider attribute="data-color-mode" defaultTheme="dark">
+    <NextThemeProvider attribute='data-color-mode' defaultTheme='dark'>
       <PrimerWrapper>{children}</PrimerWrapper>
     </NextThemeProvider>
   );
