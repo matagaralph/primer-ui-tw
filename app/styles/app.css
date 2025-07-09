@@ -8,7 +8,11 @@
 
 @theme {
   --font-default: Inter, Inter-var, InterVariable, sans-serif;
+  --color-link: var(--fgColor-link),
   --border-color-default: var(--borderColor-default);
+  --background-color-muted: var(--bgColor-muted);
+  --background-color-default: var(--bgColor-default);
+  --background-color-success-emphasis: var(--bgColor-success-emphasis);
 }
 
 :root {

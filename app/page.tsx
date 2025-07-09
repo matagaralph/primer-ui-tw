@@ -6,7 +6,6 @@ export default function IndexPage() {
   const { setTheme } = useTheme();
   return (
     <>
-      <header className="tw:border-b tw:border-default tw:h-14"></header>
       <main className="tw:max-w-7xl tw:pt-8 tw:mx-auto tw:px-4 tw:sm:px-6">
         <Text className="mt-1">
           This is combination of GitHub Primer UI and TailwindCSS v4.

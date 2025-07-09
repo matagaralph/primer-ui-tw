@@ -2,6 +2,7 @@ import "./styles/app.css";
 import { BaseStyles } from "@primer/react";
 import { StyledComponentsRegistry } from "./registry";
 import { ThemeProvider } from "@/components/theme-provider";
+import AppNavbar from "@/components/NavBar";
 
 export const metadata = {
   title: "Smoasters",
@@ -25,7 +26,12 @@ export default async function RootLayout({
       <body className="tw:font-default">
         <StyledComponentsRegistry>
           <ThemeProvider>
-            <BaseStyles>{children}</BaseStyles>
+            <BaseStyles>
+              <>
+                <AppNavbar />
+                {children}
+              </>
+            </BaseStyles>
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
