@@ -36,7 +36,6 @@ const navItems = [
 
 export default function AppNavbar() {
   const pathname = usePathname();
-  console.log(pathname);
 
   const currentHref =
     navItems.find((item) => pathname === item.href)?.href ??

@@ -24,3 +24,16 @@ interface ShopwareShipments {
   shippingDateLatest: string;
   associatedOrderNumber: string;
 }
+
+interface Product {
+  id: string;
+  manufacturerNumber: string;
+  ean: string;
+  sales: number;
+  productNumber: string;
+  availableStock: number;
+  name: string;
+  manufacturer: {
+    name: ?string;
+  };
+}
