@@ -6,7 +6,7 @@ import { Button, TextInput } from '@primer/react';
 import { Column, DataTable, Table } from '@primer/react/experimental';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
-import xior from 'xior';
+import { toast } from 'sonner';
 
 const columns: Column<Product>[] = [
   {
@@ -123,14 +123,18 @@ export default function ProductPage() {
         </div>
         <Button
           onClick={() => {
-            xior.post('/');
+            smoastersApi.post('/shopware/inventory');
+            toast.success('Manual stock syncing initiated successfully.');
           }}
         >
           Sync Stocks
         </Button>
         <Button
           variant='primary'
-          onClick={() => exportToCSV(filteredProducts)}
+          onClick={() => {
+            exportToCSV(filteredProducts);
+            toast.success('Inventory quantities have finished exporting.');
+          }}
           trailingVisual={DownloadIcon}
           disabled={filteredProducts.length === 0}
         >
