@@ -1,8 +1,7 @@
-import "./styles/app.css";
+import { ThemeProvider } from "@/components/theme-provider";
 import { BaseStyles } from "@primer/react";
 import { StyledComponentsRegistry } from "./registry";
-import { ThemeProvider } from "@/components/theme-provider";
-import AppNavbar from "@/components/NavBar";
+import "./styles/app.css";
 
 export const metadata = {
   title: "Smoasters",

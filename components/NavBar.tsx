@@ -22,6 +22,7 @@ import {
 } from "@primer/react";
 import { StoreIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import AppLogoIcon from "./app-logo-icon";
 
 const navItems = [
   { href: "/", label: "Overview", icon: BookIcon },
@@ -55,7 +56,7 @@ export default function AppNavbar() {
       >
         <PageHeader.TitleArea>
           <PageHeader.LeadingVisual>
-            <MarkGithubIcon size={32} />
+            <AppLogoIcon className="tw:size-6" />
           </PageHeader.LeadingVisual>
           <PageHeader.Title>Smoasters</PageHeader.Title>
         </PageHeader.TitleArea>
