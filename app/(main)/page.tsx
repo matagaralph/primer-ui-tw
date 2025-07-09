@@ -9,17 +9,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import xior from 'xior';
 
-const usage = {
-  database: {
-    total: {
-      rows_read: 45,
-      rows_written: '$1020',
-      storage_bytes: 52428800, // 50 MB
-      bytes_synced: 26214400, // 25 MB
-    },
-  },
-};
-
 const columns: Column<ShopwareShipments>[] = [
   {
     header: 'Order Number',
@@ -101,14 +90,14 @@ export default function IndexPage() {
     <>
       <main className='tw:mx-auto tw:max-w-7xl tw:px-4 tw:py-8 tw:sm:px-6'>
         <div className='tw:!mt-4 tw:!mb-8 tw:grid tw:grid-cols-1 tw:gap-5 tw:sm:grid-cols-3 tw:lg:grid-cols-4'>
-          <StatsCard usage={usage} />
+          <StatsCard />
         </div>
         <div className=''>
           <Table.Container>
             {isLoading && (
               <Table.Skeleton
                 aria-labelledby='shipments loading'
-                rows={10}
+                rows={15}
                 columns={columns}
               />
             )}

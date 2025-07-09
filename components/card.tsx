@@ -11,8 +11,7 @@ export interface Usage {
   };
 }
 
-function StatsCard({ usage: { database } }: { usage: Usage }) {
-  const { total } = database;
+function StatsCard() {
   return (
     <>
       <Box
@@ -31,7 +30,7 @@ function StatsCard({ usage: { database } }: { usage: Usage }) {
           Orders Received
         </dt>
         <dd className='tw:mt-1 tw:text-3xl tw:font-semibold tw:tracking-tight tw:text-[var(--fgColor-muted)]'>
-          {total.rows_read}
+          45
         </dd>
       </Box>
       <Box
@@ -50,7 +49,7 @@ function StatsCard({ usage: { database } }: { usage: Usage }) {
           Shipping Costs
         </dt>
         <dd className='tw:mt-1 tw:text-3xl tw:font-semibold tw:tracking-tight tw:text-[var(--fgColor-muted)]'>
-          {total.rows_written}
+          $1,020
         </dd>
       </Box>
       <Box
