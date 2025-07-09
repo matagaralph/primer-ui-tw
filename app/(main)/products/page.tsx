@@ -1,4 +1,6 @@
 'use client';
+import { exportToCSV } from '@/lib';
+import smoastersApi from '@/lib/http';
 import { DownloadIcon, SearchIcon } from '@primer/octicons-react';
 import { Button, TextInput } from '@primer/react';
 import { Column, DataTable, Table } from '@primer/react/experimental';
@@ -66,11 +68,7 @@ export default function ProductPage() {
   } = useQuery<Product[], Error>({
     queryKey: ['shops'],
     queryFn: () =>
-      xior
-        .get<
-          Product[]
-        >('https://smoasters.coffeeannan.com/api/shopware/products')
-        .then((res) => res.data),
+      smoastersApi.get<Product[]>('/shopware/products').then((res) => res.data),
   });
 
   const filteredProducts = useMemo(() => {
@@ -123,8 +121,19 @@ export default function ProductPage() {
             }}
           />
         </div>
-        <Button>Sync Stocks</Button>
-        <Button variant='primary' trailingVisual={DownloadIcon}>
+        <Button
+          onClick={() => {
+            xior.post('/');
+          }}
+        >
+          Sync Stocks
+        </Button>
+        <Button
+          variant='primary'
+          onClick={() => exportToCSV(filteredProducts)}
+          trailingVisual={DownloadIcon}
+          disabled={filteredProducts.length === 0}
+        >
           Export CSV
         </Button>
       </div>

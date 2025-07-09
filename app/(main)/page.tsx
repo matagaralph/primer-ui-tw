@@ -3,11 +3,11 @@
 import { Badge } from '@/components/badge';
 import StatsCard from '@/components/card';
 import { formatDateYMD } from '@/lib';
+import smoastersApi from '@/lib/http';
 import { Column, DataTable, Table } from '@primer/react/experimental';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useState } from 'react';
-import xior from 'xior';
 
 const columns: Column<ShopwareShipments>[] = [
   {
@@ -71,10 +71,8 @@ export default function IndexPage() {
   } = useQuery<ShopwareShipments[], Error>({
     queryKey: ['shops'],
     queryFn: () =>
-      xior
-        .get<
-          ShopwareShipments[]
-        >('https://smoasters.coffeeannan.com/api/fufillments/shopware')
+      smoastersApi
+        .get<ShopwareShipments[]>('/fufillments/shopware')
         .then((res) => res.data),
   });
 
