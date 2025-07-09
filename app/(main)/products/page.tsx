@@ -1,9 +1,9 @@
 'use client';
 import { DownloadIcon, SearchIcon } from '@primer/octicons-react';
-import { ActionList, ActionMenu, Button, TextInput } from '@primer/react';
+import { Button, TextInput } from '@primer/react';
 import { Column, DataTable, Table } from '@primer/react/experimental';
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import xior from 'xior';
 
 const columns: Column<Product>[] = [
@@ -18,7 +18,6 @@ const columns: Column<Product>[] = [
     field: 'manufacturerNumber',
     sortBy: 'alphanumeric',
   },
-
   {
     header: 'Sales',
     field: 'sales',
@@ -40,6 +39,10 @@ const columns: Column<Product>[] = [
 ];
 
 export default function ProductPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [pageIndex, setPageIndex] = useState(0);
+  const pageSize = 25;
+
   const {
     data: products = [],
     isError,
@@ -55,22 +58,45 @@ export default function ProductPage() {
         .then((res) => res.data),
   });
 
-  const pageSize = 25;
-  const [pageIndex, setPageIndex] = useState(0);
+  const filteredProducts = useMemo(() => {
+    if (!searchTerm.trim()) {
+      return products;
+    }
+
+    const searchLower = searchTerm.toLowerCase().trim();
+    return products.filter((product) => {
+      const nameMatch = product.name?.toLowerCase().includes(searchLower);
+
+      const skuMatch = product.manufacturerNumber
+        ?.toLowerCase()
+        .includes(searchLower);
+
+      return nameMatch || skuMatch;
+    });
+  }, [products, searchTerm]);
+
+  // Reset pagination when search changes
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+    setPageIndex(0);
+  };
+
+  // Paginate filtered results
   const start = pageIndex * pageSize;
   const end = start + pageSize;
-  const rows = products.slice(start, end);
+  const rows = filteredProducts.slice(start, end);
 
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <main className='tw:mx-auto tw:max-w-7xl tw:px-4 tw:py-14 tw:pt-8 tw:sm:px-6'>
       <div className='tw:mb-4 tw:flex tw:items-center tw:gap-3'>
-        {/* Search Input */}
         <div className='tw:flex-1'>
           <TextInput
-            placeholder='Find  a product by name, sku...'
+            placeholder='Find a product by name, sku...'
             leadingVisual={SearchIcon}
+            value={searchTerm}
+            onChange={(e) => handleSearchChange(e.target.value)}
             sx={{
               width: '100%',
               bg: 'canvas.subtle',
@@ -87,6 +113,15 @@ export default function ProductPage() {
           Export CSV
         </Button>
       </div>
+
+      {searchTerm && (
+        <div className='tw:text-muted tw:mb-3 tw:text-sm'>
+          Found {filteredProducts.length} product
+          {filteredProducts.length !== 1 ? 's' : ''}
+          {searchTerm && ` matching "${searchTerm}"`}
+        </div>
+      )}
+
       <Table.Container>
         {isLoading && (
           <Table.Skeleton
@@ -101,7 +136,7 @@ export default function ProductPage() {
             <Table.Pagination
               aria-label='Pagination for shipments'
               pageSize={pageSize}
-              totalCount={products.length}
+              totalCount={filteredProducts.length}
               onChange={({ pageIndex }) => {
                 setPageIndex(pageIndex);
               }}
