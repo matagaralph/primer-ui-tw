@@ -4,7 +4,6 @@ import {
   BookIcon,
   GearIcon,
   InboxIcon,
-  MarkGithubIcon,
   PackageIcon,
   QuestionIcon,
   SearchIcon,
@@ -27,12 +26,10 @@ import AppLogoIcon from './app-logo-icon';
 const navItems = [
   { href: '/', label: 'Overview', icon: BookIcon },
   {
-    href: '/orders',
-    label: 'Orders',
+    href: '/products',
+    label: 'Products',
     icon: TagIcon,
-    counter: '43',
   },
-  { href: '/shipments', label: 'Shipments', icon: PackageIcon },
   { href: '/shops', label: 'Shops', icon: () => <StoreIcon size={16} /> },
   { href: '/settings', label: 'Settings', icon: GearIcon },
 ];
@@ -108,12 +105,11 @@ export default function AppNavbar() {
         </PageHeader.Actions>
       </PageHeader>
       <UnderlineNav aria-label='Navigation links'>
-        {navItems.map(({ href, label, icon: Icon, counter }) => (
+        {navItems.map(({ href, label, icon: Icon }) => (
           <UnderlineNav.Item
             key={href}
             href={href}
             icon={Icon}
-            counter={counter}
             aria-current={href === currentHref ? 'page' : undefined}
           >
             {label}
