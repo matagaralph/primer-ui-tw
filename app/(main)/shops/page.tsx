@@ -12,22 +12,6 @@ const shops = [
     platform: 'Shopify',
     status: 'On',
   },
-  {
-    id: '1988',
-    roaster_name: 'Kaffezentrale',
-    company: 'Gustus Gmbh',
-    website: 'https://kaffezentrale.ch',
-    platform: 'Shopware',
-    status: 'On',
-  },
-  {
-    id: '1989',
-    roaster_name: 'CA Händlerportal',
-    company: 'Gustus Gmbh',
-    website: 'https://28b124-1b.myshopify.com',
-    platform: 'Shopify',
-    status: 'On',
-  },
 ];
 
 export default function ShopsPage() {

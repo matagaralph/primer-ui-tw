@@ -95,7 +95,6 @@ export default function IndexPage() {
   const end = start + pageSize;
   const rows: ShopwareShipments[] = shipments.slice(start, end);
 
-  if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
