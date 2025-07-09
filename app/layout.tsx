@@ -26,12 +26,7 @@ export default async function RootLayout({
       <body className="tw:font-default">
         <StyledComponentsRegistry>
           <ThemeProvider>
-            <BaseStyles>
-              <>
-                <AppNavbar />
-                {children}
-              </>
-            </BaseStyles>
+            <BaseStyles>{children}</BaseStyles>
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
