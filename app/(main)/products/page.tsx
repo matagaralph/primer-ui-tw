@@ -21,11 +21,26 @@ const columns: Column<Product>[] = [
   {
     header: 'Sales',
     field: 'sales',
+    renderCell: (row) =>
+      row.sales <= 0 ? (
+        <span className='tw:text-[var(--fgColor-danger)]'>{row.sales}</span>
+      ) : (
+        <span>{row.sales}</span>
+      ),
     sortBy: 'basic',
   },
   {
     header: 'Stock Available',
     field: 'availableStock',
+    sortBy: 'basic',
+    renderCell: (row) =>
+      row.sales <= 0 ? (
+        <span className='tw:text-[var(--fgColor-danger)]'>
+          {row.availableStock}
+        </span>
+      ) : (
+        <span>{row.availableStock}</span>
+      ),
   },
   {
     header: 'Product Number',
