@@ -12,8 +12,8 @@ import xior from 'xior';
 const usage = {
   database: {
     total: {
-      rows_read: 124,
-      rows_written: 98,
+      rows_read: 45,
+      rows_written: '$1020',
       storage_bytes: 52428800, // 50 MB
       bytes_synced: 26214400, // 25 MB
     },

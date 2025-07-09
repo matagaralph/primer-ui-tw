@@ -28,7 +28,7 @@ function StatsCard({ usage: { database } }: { usage: Usage }) {
         }}
       >
         <dt className='tw:truncate tw:text-sm tw:font-medium tw:text-[var(--fgColor-default)]'>
-          Orders
+          Orders Received
         </dt>
         <dd className='tw:mt-1 tw:text-3xl tw:font-semibold tw:tracking-tight tw:text-[var(--fgColor-muted)]'>
           {total.rows_read}
@@ -47,7 +47,7 @@ function StatsCard({ usage: { database } }: { usage: Usage }) {
         }}
       >
         <dt className='tw:truncate tw:text-sm tw:font-medium tw:text-[var(--fgColor-default)]'>
-          Rows Written
+          Shipping Costs
         </dt>
         <dd className='tw:mt-1 tw:text-3xl tw:font-semibold tw:tracking-tight tw:text-[var(--fgColor-muted)]'>
           {total.rows_written}
@@ -66,10 +66,10 @@ function StatsCard({ usage: { database } }: { usage: Usage }) {
         }}
       >
         <dt className='tw:truncate tw:text-sm tw:font-medium tw:text-[var(--fgColor-default)]'>
-          Storage
+          Parcels Shipped
         </dt>
         <dd className='tw:mt-1 tw:text-3xl tw:font-semibold tw:tracking-tight tw:text-[var(--fgColor-muted)]'>
-          {total.storage_bytes / 1024} MB
+          44
         </dd>
       </Box>
       <Box
@@ -85,10 +85,10 @@ function StatsCard({ usage: { database } }: { usage: Usage }) {
         }}
       >
         <dt className='tw:truncate tw:text-sm tw:font-medium tw:text-[var(--fgColor-default)]'>
-          Storage Synced
+          Pending
         </dt>
         <dd className='tw:mt-1 tw:text-3xl tw:font-semibold tw:tracking-tight tw:text-[var(--fgColor-muted)]'>
-          {total.bytes_synced / 1024} MB
+          01
         </dd>
       </Box>
     </>
