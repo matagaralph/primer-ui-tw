@@ -122,14 +122,6 @@ export default function ProductPage() {
           />
         </div>
         <Button
-          onClick={() => {
-            smoastersApi.post('/shopware/inventory');
-            toast.success('Manual stock syncing initiated successfully.');
-          }}
-        >
-          Sync Stocks
-        </Button>
-        <Button
           variant='primary'
           onClick={() => {
             exportToCSV(filteredProducts);
