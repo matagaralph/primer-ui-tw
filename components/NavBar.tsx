@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   AppsIcon,
   BookIcon,
@@ -10,7 +10,7 @@ import {
   SearchIcon,
   SignOutIcon,
   TagIcon,
-} from "@primer/octicons-react";
+} from '@primer/octicons-react';
 import {
   ActionList,
   ActionMenu,
@@ -19,22 +19,22 @@ import {
   PageHeader,
   TextInput,
   UnderlineNav,
-} from "@primer/react";
-import { StoreIcon } from "lucide-react";
-import { usePathname } from "next/navigation";
-import AppLogoIcon from "./app-logo-icon";
+} from '@primer/react';
+import { StoreIcon } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import AppLogoIcon from './app-logo-icon';
 
 const navItems = [
-  { href: "/", label: "Overview", icon: BookIcon },
+  { href: '/', label: 'Overview', icon: BookIcon },
   {
-    href: "/orders",
-    label: "Orders",
+    href: '/orders',
+    label: 'Orders',
     icon: TagIcon,
-    counter: "43",
+    counter: '43',
   },
-  { href: "/shipments", label: "Shipments", icon: PackageIcon },
-  { href: "/shops", label: "Shops", icon: () => <StoreIcon size={16} /> },
-  { href: "/settings", label: "Settings", icon: GearIcon },
+  { href: '/shipments', label: 'Shipments', icon: PackageIcon },
+  { href: '/shops', label: 'Shops', icon: () => <StoreIcon size={16} /> },
+  { href: '/settings', label: 'Settings', icon: GearIcon },
 ];
 
 export default function AppNavbar() {
@@ -43,38 +43,38 @@ export default function AppNavbar() {
 
   const currentHref =
     navItems.find((item) => pathname === item.href)?.href ??
-    navItems.find((item) => pathname.startsWith(item.href) && item.href !== "/")
+    navItems.find((item) => pathname.startsWith(item.href) && item.href !== '/')
       ?.href ??
-    "/";
+    '/';
   return (
-    <header className="tw:bg-muted tw:dark:bg-default">
+    <header className='tw:bg-muted tw:dark:bg-default'>
       <PageHeader
         sx={{
-          paddingTop: "16px",
-          marginX: "16px",
+          paddingTop: '16px',
+          marginX: '16px',
         }}
       >
         <PageHeader.TitleArea>
           <PageHeader.LeadingVisual>
-            <AppLogoIcon className="tw:size-6" />
+            <AppLogoIcon className='tw:size-6' />
           </PageHeader.LeadingVisual>
           <PageHeader.Title>Smoasters</PageHeader.Title>
         </PageHeader.TitleArea>
 
         <PageHeader.Actions>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <TextInput
               leadingVisual={SearchIcon}
-              placeholder="Type to search"
-              sx={{ minWidth: "272px" }}
+              placeholder='Type to search'
+              sx={{ minWidth: '272px' }}
             />
 
-            <IconButton icon={QuestionIcon} aria-label="Help" />
-            <IconButton icon={InboxIcon} aria-label="Notifications" />
+            <IconButton icon={QuestionIcon} aria-label='Help' />
+            <IconButton icon={InboxIcon} aria-label='Notifications' />
             <ActionMenu>
               <ActionMenu.Anchor>
                 <Avatar
-                  src="https://avatars.githubusercontent.com/u/1?v=4"
+                  src='https://avatars.githubusercontent.com/u/1?v=4'
                   size={28}
                 />
               </ActionMenu.Anchor>
@@ -82,7 +82,7 @@ export default function AppNavbar() {
                 <ActionList showDividers>
                   <ActionList.Item
                     onSelect={() => {
-                      alert("Item one clicked");
+                      alert('Item one clicked');
                     }}
                   >
                     <ActionList.LeadingVisual>
@@ -91,9 +91,9 @@ export default function AppNavbar() {
                     Dashboard
                   </ActionList.Item>
                   <ActionList.Item
-                    variant="danger"
+                    variant='danger'
                     onSelect={() => {
-                      alert("Item three clicked");
+                      alert('Item three clicked');
                     }}
                   >
                     <ActionList.LeadingVisual>
@@ -107,14 +107,14 @@ export default function AppNavbar() {
           </div>
         </PageHeader.Actions>
       </PageHeader>
-      <UnderlineNav aria-label="Navigation links">
+      <UnderlineNav aria-label='Navigation links'>
         {navItems.map(({ href, label, icon: Icon, counter }) => (
           <UnderlineNav.Item
             key={href}
             href={href}
             icon={Icon}
             counter={counter}
-            aria-current={href === currentHref ? "page" : undefined}
+            aria-current={href === currentHref ? 'page' : undefined}
           >
             {label}
           </UnderlineNav.Item>
