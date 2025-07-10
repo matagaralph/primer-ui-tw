@@ -18,7 +18,6 @@ export const authOptions: NextAuthOptions = {
         email: {
           label: 'Email',
           type: 'email',
-          value: 'munashemailers@gmail.com',
         },
         password: { label: 'Password', type: 'password' },
       },
