@@ -11,8 +11,7 @@ const smoastersApi = xior.create({
 
 smoastersApi.interceptors.request.use(async (config) => {
   const user = await getCurrentUser();
-
-  config.headers.Authorization = `${user?.accessToken}`;
+  config.headers.Authorization = `Bearer ${user?.accessToken}`;
   return config;
 });
 

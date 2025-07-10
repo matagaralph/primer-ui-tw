@@ -22,6 +22,9 @@ import {
 import { StoreIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import AppLogoIcon from './app-logo-icon';
+import { signOut } from 'next-auth/react';
+import smoastersApi from '@/lib/http';
+import { toast } from 'sonner';
 
 const navItems = [
   { href: '/', label: 'Overview', icon: BookIcon },
@@ -89,7 +92,15 @@ export default function AppNavbar() {
                   <ActionList.Item
                     variant='danger'
                     onSelect={() => {
-                      alert('Item three clicked');
+                      smoastersApi
+                        .post('/logout')
+                        .then(() => {
+                          toast.success(
+                            'You sign out login to access resources.'
+                          );
+                          signOut();
+                        })
+                        .catch((err) => console.log(err.message));
                     }}
                   >
                     <ActionList.LeadingVisual>
