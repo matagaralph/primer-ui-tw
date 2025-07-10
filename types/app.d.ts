@@ -23,6 +23,7 @@ interface ShopwareShipments {
   shippingDateEarliest: string;
   shippingDateLatest: string;
   associatedOrderNumber: string;
+  sales: number;
 }
 
 interface Product {

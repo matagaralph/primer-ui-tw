@@ -1,7 +1,6 @@
 'use client';
 
 import { Badge } from '@/components/badge';
-import StatsCard from '@/components/card';
 import { formatDateYMD } from '@/lib';
 import smoastersApi from '@/lib/http';
 import { Column, DataTable, Table } from '@primer/react/experimental';
@@ -40,8 +39,8 @@ const columns: Column<ShopwareShipments>[] = [
     },
   },
   {
-    header: 'Shipping Method',
-    field: 'shippingMethod',
+    header: 'Sales',
+    field: 'sales',
   },
   {
     header: 'State',
